@@ -3,46 +3,48 @@
     Created on : Dec 15, 2022, 10:15:23 AM
     Author     : Ferdian Iqbal
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>  
-<html>  
-    <head>  
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
-        <title>Edit Form</title>  
-    </head>  
-    <body>  
-        <%@page import="com.javatpoint.data.UserData,com.javatpoint.bean.User"%>  
+<!DOCTYPE html>
+<html lang="en">
 
-        <%
-            String id = request.getParameter("id");
-            User u = UserData.getRecordById(Integer.parseInt(id));
-        %>  
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="/images/logo.svg">
+        <title>Add New Blog</title>
 
-        <h1>Edit Form</h1>  
-        <form action="edituser.jsp" method="post">  
-            <input type="hidden" name="id" value="<%=u.getId()%>"/>  
-            <table>  
-                <tr><td>Name:</td><td>  
-                        <input type="text" name="name" value="<%= u.getName()%>"/></td></tr>  
-                <tr><td>Password:</td><td>  
-                        <input type="password" name="password" value="<%= u.getPassword()%>"/></td></tr>  
-                <tr><td>Email:</td><td>  
-                        <input type="email" name="email" value="<%= u.getEmail()%>"/></td></tr>  
-                <tr><td>Sex:</td><td>  
-                        <input type="radio" name="sex" value="male"/>Male   
-                        <input type="radio" name="sex" value="female"/>Female </td></tr>  
-                <tr><td>Country:</td><td>  
-                        <select name="country">  
-                            <option>Indonesia</option>  
-                            <option>Korea</option>  
-                            <option>Japan</option>    
-                            <option>Other</option>  
-                        </select>  
-                    </td></tr>  
-                <tr><td colspan="2"><input type="submit" value="Edit User"/></td></tr>  
-            </table>  
-        </form>  
+        <link rel="stylesheet" href="./../css/bootstrap.css">
+        <!--<link rel="stylesheet" href="./../">-->
+    </head>
+    <%@page import="com.javatpoint.data.BlogData,com.javatpoint.bean.Blog"%>  
 
-    </body>  
+    <%
+        String id = request.getParameter("id");
+        Blog u = BlogData.getRecordById(Integer.parseInt(id));
+    %>  
+    <body>
+        <div class="container py-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10 col-sm-8 col-lg-5 form-box">
+                    <h2 class="text-center mb-5">Edit Content</h2>
+                    <form method="POST" action="./editblog.jsp" autocomplete="off">
+                        <input type="hidden" name="id" value="<%=u.getId()%>"/>  
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" required id="title" name="title" placeholder="add title here" value="<%= u.getTitle()%>">
+                            <label for="title" class="form-label">Title</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <textarea class="form-control" placeholder="Add body here" id="body" name="body" style="min-height: 300px"><%= u.getBody()%></textarea>
+                            <label for="body">Body</label>
+                        </div>
+                        <button type="submit" class="w-100 btn btn-lg btn-success mt-4">Edit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="./../js/bootstrap.js"></script>
+    </body>
+
 </html>
+

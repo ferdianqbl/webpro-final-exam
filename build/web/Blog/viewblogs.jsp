@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="./../css/bootstrap.css">
         <!--<link rel="stylesheet" href="./../css/dataTables.css">-->
         <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-        
+
     </head>  
     <body>  
 
@@ -26,10 +26,27 @@
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
         <div class="blog-list container my-5"> 
-            <h1 class="text-center mb-5">BLog List</h1>  
+            <h1 class="text-center mb-5">Blog List</h1>  
+
+            <%if (session.getAttribute("status") != null) {%>
+            <div class="alert alert-dismissible fade show <%
+                if (session.getAttribute("status") == "1") {
+                    out.println("alert-success");
+                } else
+                    out.println("alert-danger");
+                 %>" role="alert">
+                <%
+                    out.println(session.getAttribute("messageStatus"));
+                    session.removeAttribute("status");
+                    session.removeAttribute("messageStatus");
+                %>
+                <c:remove var="status" scope="session" />
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <%}%>
 
             <a href="addblogform.jsp" class="btn btn-primary mb-3">Add New Blog</a>
-            
+
             <%
                 List<Blog> list = BlogData.getAllRecords();
                 request.setAttribute("list", list);
@@ -55,11 +72,11 @@
                                 <a href="editblogform.jsp?id=${u.getId()}" class="btn btn-success">Edit</a>
                                 <a href="deleteblog.jsp?id=${u.getId()}" class="btn btn-danger">Delete</a>
                             </td></tr>
-                        <% num+=1; %>
+                            <% num += 1;%>
                         </c:forEach> 
                 </tbody>
             </table>
-                    <div class="mt-5 visually-hidden">sssssssss</div>
+            <div class="mt-5 visually-hidden">sssssssss</div>
         </div>
         <script src="./../js/jquery.js"></script>
         <script src="./../js/dataTables.bootstrap5.min.js"></script>

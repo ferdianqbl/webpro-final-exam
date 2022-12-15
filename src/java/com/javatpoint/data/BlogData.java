@@ -98,7 +98,7 @@ public class BlogData {
             while (rs.next()) {
                 u = new Blog();
                 u.setId(rs.getInt("id"));
-                u.setTitle(rs.getString("name"));
+                u.setTitle(rs.getString("title"));
                 u.setBody(rs.getString("body"));
             }
         } catch (Exception e) {

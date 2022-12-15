@@ -4,10 +4,22 @@
     Author     : Ferdian Iqbal
 --%>
 
-<%@page import="com.javatpoint.data.UserData"%>  
-<jsp:useBean id="u" class="com.javatpoint.bean.User"></jsp:useBean>  
+<%@page import="com.javatpoint.data.BlogData"%>  
+<jsp:useBean id="u" class="com.javatpoint.bean.Blog"></jsp:useBean>  
 <jsp:setProperty property="*" name="u"/>  
 <%
-    int i = UserData.update(u);
-    response.sendRedirect("viewusers.jsp");
+    int i = BlogData.update(u);
+    if (i > 0) {
+    session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+        session.setAttribute("status", "1");
+        session.setAttribute("messageStatus", "You're blog have successfully Edited!");
+        response.sendRedirect("viewblogs.jsp");
+    } else {
+        session.removeAttribute("status");
+            session.removeAttribute("messageStatus");
+            session.setAttribute("status", "0");
+            session.setAttribute("messageStatus", "Edit Blog Failed!");
+            response.sendRedirect("viewblogs.jsp");
+    }
 %>
