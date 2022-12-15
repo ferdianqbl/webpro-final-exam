@@ -69,7 +69,7 @@ public class BlogData {
     }
 
     public static List<Blog> getAllRecords() {
-        List<Blog> list = new ArrayList<>();
+        List<Blog> list = new ArrayList<Blog>();
 
         try {
             Connection con = getConnection();

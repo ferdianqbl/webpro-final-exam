@@ -14,27 +14,25 @@
     </head>  
     <body>  
 
-        <%@page import="com.javatpoint.data.UserData,com.javatpoint.bean.*,java.util.*"%>  
+        <%@page import="com.javatpoint.data.BlogData,com.javatpoint.bean.*,java.util.*"%>  
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
-        <h1>Users List</h1>  
+        <h1>BLog List</h1>  
 
         <%
-            List<User> list = UserData.getAllRecords();
+            List<Blog> list = BlogData.getAllRecords();
             request.setAttribute("list", list);
         %>  
 
         <table border="1" width="90%">  
-            <tr><th>Id</th><th>Name</th><th>Password</th><th>Username</th>  
+            <tr><th>Id</th><th>Title</th><th>Body</th>
                 <th>Edit</th><th>Delete</th></tr>  
                     <c:forEach items="${list}" var="u">  
-                <tr><td>${u.getId()}</td><td>${u.getName()}</td><td>${u.getPassword()}</td>  
-                    <td>${u.getUsername()}</td>
-                    <td><a href="editform.jsp?id=${u.getId()}">Edit</a></td>  
-                    <td><a href="deleteuser.jsp?id=${u.getId()}">Delete</a></td></tr>  
+                <tr><td>${u.getId()}</td><td>${u.getTitle()}</td><td>${u.getBody()}</td>  
+                    <td><a href="editblogform.jsp?id=${u.getId()}">Edit</a></td>  
+                    <td><a href="deleteblog.jsp?id=${u.getId()}">Delete</a></td></tr>  
                 </c:forEach>  
-        </table>  
-        <br/><a href="adduserform.jsp">Add New User</a>  
+        </table>
 
     </body>  
 </html>
