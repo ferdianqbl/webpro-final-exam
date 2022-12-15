@@ -31,12 +31,10 @@ public class UserData {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "insert into register(name,password,email,sex,country) values(?,?,?,?,?)");
+                    "insert into user(name,username,password) values(?,?,?)");
             ps.setString(1, u.getName());
-            ps.setString(2, u.getPassword());
-            ps.setString(3, u.getEmail());
-            ps.setString(4, u.getSex());
-            ps.setString(5, u.getCountry());
+            ps.setString(2, u.getUsername());
+            ps.setString(3, u.getPassword());
             status = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -49,12 +47,10 @@ public class UserData {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "update register set name=?,password=?,email=?,sex=?,country=? where id=?");
+                    "update user set name=?,username=?,password=? where id=?");
             ps.setString(1, u.getName());
-            ps.setString(2, u.getPassword());
-            ps.setString(3, u.getEmail());
-            ps.setString(4, u.getSex());
-            ps.setString(5, u.getCountry());
+            ps.setString(2, u.getUsername());
+            ps.setString(3, u.getPassword());
             ps.setInt(6, u.getId());
             status = ps.executeUpdate();
         } catch (Exception e) {
@@ -67,7 +63,7 @@ public class UserData {
         int status = 0;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("delete from register where id=?");
+            PreparedStatement ps = con.prepareStatement("delete from user where id=?");
             ps.setInt(1, u.getId());
             status = ps.executeUpdate();
         } catch (Exception e) {
@@ -82,16 +78,14 @@ public class UserData {
 
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from register");
+            PreparedStatement ps = con.prepareStatement("select * from user");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 User u = new User();
                 u.setId(rs.getInt("id"));
                 u.setName(rs.getString("name"));
+                u.setUsername(rs.getString("username"));
                 u.setPassword(rs.getString("password"));
-                u.setEmail(rs.getString("email"));
-                u.setSex(rs.getString("sex"));
-                u.setCountry(rs.getString("country"));
                 list.add(u);
             }
         } catch (Exception e) {
@@ -104,21 +98,21 @@ public class UserData {
         User u = null;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from register where id=?");
+            PreparedStatement ps = con.prepareStatement("select * from user where id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 u = new User();
                 u.setId(rs.getInt("id"));
                 u.setName(rs.getString("name"));
+                u.setName(rs.getString("username"));
                 u.setPassword(rs.getString("password"));
-                u.setEmail(rs.getString("email"));
-                u.setSex(rs.getString("sex"));
-                u.setCountry(rs.getString("country"));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
         return u;
     }
+    
+//    public static User getValidation()
 }

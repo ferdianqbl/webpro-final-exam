@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Rufina:wght@400;700&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  background: #FFFFFF;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+}/*# sourceMappingURL=login-register.css.map */

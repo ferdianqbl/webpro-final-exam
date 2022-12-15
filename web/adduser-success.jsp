@@ -14,7 +14,7 @@
     <body>  
 
         <p>Record successfully saved!</p>  
-        <jsp:include page="userform.html"></jsp:include>  
+        <a href="viewusers.jsp">View All Records</a><br/>   
 
     </body>  
 </html>
