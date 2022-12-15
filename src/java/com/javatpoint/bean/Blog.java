@@ -33,7 +33,7 @@ public class Blog {
         return body;
     }
 
-    public void setBody(String Body) {
+    public void setBody(String body) {
         this.body = body;
     }
 }

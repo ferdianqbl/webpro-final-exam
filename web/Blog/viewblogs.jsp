@@ -9,30 +9,60 @@
 
 <html>  
     <head>  
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
-        <title>View Users</title>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="/images/logo.svg">
+        <title>Blog List</title>
+
+        <link rel="stylesheet" href="./../css/bootstrap.css">
+        <!--<link rel="stylesheet" href="./../css/dataTables.css">-->
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        
     </head>  
     <body>  
 
         <%@page import="com.javatpoint.data.BlogData,com.javatpoint.bean.*,java.util.*"%>  
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
-        <h1>BLog List</h1>  
+        <div class="blog-list container my-5"> 
+            <h1 class="text-center mb-5">BLog List</h1>  
 
-        <%
-            List<Blog> list = BlogData.getAllRecords();
-            request.setAttribute("list", list);
-        %>  
+            <%
+                List<Blog> list = BlogData.getAllRecords();
+                request.setAttribute("list", list);
+            %>  
 
-        <table border="1" width="90%">  
-            <tr><th>Id</th><th>Title</th><th>Body</th>
-                <th>Edit</th><th>Delete</th></tr>  
+            <table id="blogTable" class="table table-striped mt-5" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% int num = 1; %>
                     <c:forEach items="${list}" var="u">  
-                <tr><td>${u.getId()}</td><td>${u.getTitle()}</td><td>${u.getBody()}</td>  
-                    <td><a href="editblogform.jsp?id=${u.getId()}">Edit</a></td>  
-                    <td><a href="deleteblog.jsp?id=${u.getId()}">Delete</a></td></tr>  
-                </c:forEach>  
-        </table>
-
+                        <tr>
+                            <td><%out.println(num);%></td>
+                            <td>${u.getTitle()}</td>
+                            <td>${u.getBody()}</td>  
+                            <td>
+                                <a href="editblogform.jsp?id=${u.getId()}" class="btn btn-success">Edit</a>
+                                <a href="deleteblog.jsp?id=${u.getId()}" class="btn btn-danger">Delete</a>
+                            </td></tr>
+                        <% num+=1; %>
+                        </c:forEach> 
+                </tbody>
+            </table>
+                    <div class="mt-5 visually-hidden">sssssssss</div>
+        </div>
+        <script src="./../js/jquery.js"></script>
+        <script src="./../js/dataTables.bootstrap5.min.js"></script>
+        <script src="./../js/bootstrap.bundle.js"></script>
+        <script src="./../js/dataTables.js"></script>
+        <script src="./../js/script.js"></script>
     </body>  
 </html>
