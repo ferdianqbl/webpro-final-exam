@@ -4,6 +4,8 @@
     Author     : Ferdian Iqbal
 --%>
 
+
+
 <%@page import="com.javatpoint.data.BlogData"%>  
 <jsp:useBean id="u" class="com.javatpoint.bean.Blog"></jsp:useBean>  
 <jsp:setProperty property="*" name="u"/>  

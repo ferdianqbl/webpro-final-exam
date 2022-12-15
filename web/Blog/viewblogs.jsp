@@ -3,7 +3,11 @@
     Created on : Dec 15, 2022, 10:53:25 AM
     Author     : Ferdian Iqbal
 --%>
-
+<%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("./../index.jsp");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>  
 
@@ -38,8 +42,8 @@
                 <%if (session.getAttribute("user") != null) { %>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        
-                       Hello, <%out.println(session.getAttribute("user"));%>
+
+                        Hello, <%out.println(session.getAttribute("user"));%>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="viewblogs.jsp"><i class="bi bi-journals"></i> Dashboard</a></li>
@@ -48,7 +52,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <form action="logout.jsp" method="POST">
+                            <form action="./../logout.jsp" method="POST">
                                 <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
                                     Logout</button>
                             </form>
@@ -62,7 +66,7 @@
                 <%}%>
             </div>
         </nav>
-        
+
         <div class="blog-list container my-5"> 
             <h1 class="text-center mb-5">Blog List</h1>  
 

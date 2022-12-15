@@ -3,6 +3,12 @@
     Created on : Dec 15, 2022, 10:15:23 AM
     Author     : Ferdian Iqbal
 --%>
+<%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("./../index.jsp");
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
