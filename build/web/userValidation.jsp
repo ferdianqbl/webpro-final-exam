@@ -6,13 +6,21 @@
 
 <%@page import="com.javatpoint.data.UserData"%>  
 <jsp:useBean id="u" class="com.javatpoint.bean.User"></jsp:useBean>  
-<jsp:setProperty property="*" name="u"/> 
+<jsp:setProperty property="*" name="u"/>  
 
 <%
-    int i = UserData.save(u);
+    int i = UserData.getValidation(u);
     if (i > 0) {
-        response.sendRedirect("adduser-success.jsp");
+    session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+        session.setAttribute("status", "1");
+        session.setAttribute("messageStatus", "You have successfully registered!");
+        response.sendRedirect("viewusers.jsp");
     } else {
-        response.sendRedirect("adduser-error.jsp");
+        session.removeAttribute("status");
+            session.removeAttribute("messageStatus");
+            session.setAttribute("status", "0");
+            session.setAttribute("messageStatus", "Login Failed!");
+            response.sendRedirect("index.jsp");
     }
 %>

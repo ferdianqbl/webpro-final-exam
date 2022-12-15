@@ -113,6 +113,30 @@ public class UserData {
         }
         return u;
     }
-    
-//    public static User getValidation()
+
+    public static int getValidation(User u) {
+        int status = 0;
+        User users = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "select * from user where username=? && password=?");
+            ps.setString(1, u.getUsername());
+            ps.setString(2, u.getPassword());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                users = new User();
+                users.setId(rs.getInt("id"));
+                users.setName(rs.getString("name"));
+                users.setUsername(rs.getString("username"));
+                users.setPassword(rs.getString("password"));
+            }
+            
+            if(users != null) status = 1;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
 }

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Dec 15, 2022, 9:52:50 AM
     Author     : Ferdian Iqbal
@@ -22,9 +22,28 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-10 col-sm-8 col-lg-5 form-box">
+
+                    <%if (session.getAttribute("status") != null) {%>
+                    <div class="alert alert-dismissible fade show <%
+                        if (session.getAttribute("status") == "1") {
+                            out.println("alert-success");
+                        } else
+                            out.println("alert-danger");
+                         %>" role="alert">
+                        <%
+                            out.println(session.getAttribute("messageStatus"));
+                            session.removeAttribute("status");
+                            session.removeAttribute("messageStatus");
+                        %>
+                        <c:remove var="status" scope="session" />
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <%}%>
+
+
                     <h2 class="text-center mb-5">Login</h2>
-                    <form method="POST" action="/login" autocomplete="off">
-                       
+                    <form method="POST" action="./userValidation.jsp" autocomplete="off">
+
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" autofocus required>

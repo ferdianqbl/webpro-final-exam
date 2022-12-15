@@ -11,8 +11,16 @@
 <%
     int i = UserData.save(u);
     if (i > 0) {
-        response.sendRedirect("adduser-success.jsp");
+    session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+        session.setAttribute("status", "1");
+        session.setAttribute("messageStatus", "You have successfully registered!");
+        response.sendRedirect("index.jsp");
     } else {
-        response.sendRedirect("adduser-error.jsp");
+        session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+        session.setAttribute("status", "0");
+        session.setAttribute("messageStatus", "Register Failed!");
+        response.sendRedirect("index.jsp");
     }
 %>
