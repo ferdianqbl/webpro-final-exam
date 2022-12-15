@@ -73,7 +73,7 @@ public class BlogData {
 
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from blog");
+            PreparedStatement ps = con.prepareStatement("select * from blog ORDER BY id DESC;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Blog u = new Blog();

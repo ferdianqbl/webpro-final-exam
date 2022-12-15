@@ -4,23 +4,23 @@
     Author     : Ferdian Iqbal
 --%>
 
-<%@page import="com.javatpoint.data.UserData"%>  
-<jsp:useBean id="u" class="com.javatpoint.bean.User"></jsp:useBean>  
+<%@page import="com.javatpoint.data.BlogData"%>  
+<jsp:useBean id="u" class="com.javatpoint.bean.Blog"></jsp:useBean>  
 <jsp:setProperty property="*" name="u"/>  
 
 <%
-    int i = UserData.save(u);
+    int i = BlogData.save(u);
     if (i > 0) {
     session.removeAttribute("status");
     session.removeAttribute("messageStatus");
         session.setAttribute("status", "1");
-        session.setAttribute("messageStatus", "You have successfully registered!");
-        response.sendRedirect("index.jsp");
+        session.setAttribute("messageStatus", "You're blog have successfully added!");
+        response.sendRedirect("viewblogs.jsp");
     } else {
         session.removeAttribute("status");
             session.removeAttribute("messageStatus");
             session.setAttribute("status", "0");
-            session.setAttribute("messageStatus", "Register Failed!");
-            response.sendRedirect("index.jsp");
+            session.setAttribute("messageStatus", "Add Blog Failed!");
+            response.sendRedirect("viewblogs.jsp");
     }
 %>

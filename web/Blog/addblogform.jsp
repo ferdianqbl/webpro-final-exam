@@ -12,44 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" href="/images/logo.svg">
-        <title>Register</title>
+        <title>Add New Blog</title>
 
-        <link rel="stylesheet" href="./css/bootstrap.css">
-        <link rel="stylesheet" href="./css/login-register.css">
+        <link rel="stylesheet" href="./../css/bootstrap.css">
+        <!--<link rel="stylesheet" href="./../">-->
     </head>
 
-    <body class="bg-primary">
+    <body>
         <div class="container py-5">
             <div class="row justify-content-center align-items-center">
                 <div class="col-10 col-sm-8 col-lg-5 form-box">
-                    <h2 class="text-center mb-5">Register</h2>
-                    <form method="POST" action="./adduser.jsp" autocomplete="off">
+                    <h2 class="text-center mb-5">Add New Content</h2>
+                    <form method="POST" action="./addblog.jsp" autocomplete="off">
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" required id="name" name="name">
+                        <div class="mb-3 form-floating">
+                            <input type="text" class="form-control" required id="title" name="title" placeholder="add title here">
+                            <label for="title" class="form-label">Title</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username"
-                                   name="username" required>
+                        <div class="mb-3 form-floating">
+                            <textarea class="form-control" placeholder="Add body here" id="body" name="body" style="min-height: 300px"></textarea>
+                            <label for="body">Body</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password"
-                                   name="password" required>
-                        </div>
-
-                        <button type="submit" class="w-100 btn btn-lg btn-success mt-4">Register</button>
+                        <button type="submit" class="w-100 btn btn-lg btn-success mt-4">Add</button>
                     </form>
-
-                    <p class="login-text text-center mt-3 text-secondary">Already registered? <a href="./index.jsp">Login
-                            Now!</a>
-                    </p>
                 </div>
             </div>
         </div>
-        <script src="/js/bootstrap.js"></script>
+        <script src="./../js/bootstrap.js"></script>
     </body>
 
 </html>

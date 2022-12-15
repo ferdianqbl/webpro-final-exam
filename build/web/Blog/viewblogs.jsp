@@ -28,6 +28,8 @@
         <div class="blog-list container my-5"> 
             <h1 class="text-center mb-5">BLog List</h1>  
 
+            <a href="addblogform.jsp" class="btn btn-primary mb-3">Add New Blog</a>
+            
             <%
                 List<Blog> list = BlogData.getAllRecords();
                 request.setAttribute("list", list);
