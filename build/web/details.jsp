@@ -34,29 +34,30 @@
                     Blog
                 </a>
 
-                <!--                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Welcome, {{ auth()->user()->username }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/editor"><i class="bi bi-journals"></i> Dashboard</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <form action="/logout" method="POST">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
-                                                    Logout</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>-->
-
+                <%if (session.getAttribute("user") != null) { %>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                       Hello, <%out.println(session.getAttribute("user"));%>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./Blog/viewblogs.jsp"><i class="bi bi-journals"></i> Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form action="logout.jsp" method="POST">
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <%} else {%>
                 <a class="btn-custom-primary" href="./login.jsp">
                     Login
                 </a>
-
+                <%}%>
             </div>
         </nav>
 

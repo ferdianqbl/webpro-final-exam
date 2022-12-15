@@ -133,7 +133,6 @@ public class UserData {
             }
             
             if(users != null) status = 1;
-
         } catch (Exception e) {
             System.out.println(e);
         }

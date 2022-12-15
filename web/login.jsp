@@ -35,7 +35,6 @@
                             session.removeAttribute("status");
                             session.removeAttribute("messageStatus");
                         %>
-                        <c:remove var="status" scope="session" />
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <%}%>

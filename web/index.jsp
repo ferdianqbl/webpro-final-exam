@@ -28,33 +28,34 @@
 
         <nav class="navbar navbar-expand-lg p-0 fixed-top" id="my-navbar">
             <div class="container">
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="index.jsp">
                     Blog
                 </a>
 
-                <!--                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Welcome, {{ auth()->user()->username }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/editor"><i class="bi bi-journals"></i> Dashboard</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <form action="/logout" method="POST">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
-                                                    Logout</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>-->
+                <%if (session.getAttribute("user") != null) { %>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
+                        Hello, <%out.println(session.getAttribute("user"));%>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="./Blog/viewblogs.jsp"><i class="bi bi-journals"></i> Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form action="logout.jsp" method="POST">
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <%} else {%>
                 <a class="btn-custom-primary" href="./login.jsp">
                     Login
                 </a>
-
+                <%}%>
             </div>
         </nav>
 
@@ -81,61 +82,61 @@
                 </div>
                 <div class="row justify-content-center align-items-center row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
-                    <% if (list != null) { %>
-                    
+                    <% if (!list.isEmpty()) { %>
+
                     <c:forEach items="${list}" var="u">
-                    <div class="col">
-                        <div class="card h-100 card-post">
-                            <div class="card-post-body">
-                                <p class="card-post-title">${u.getTitle()}</p>
-                                <a href="details.jsp?id=${u.getId()}" class="nav-link card-post-link">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
+                        <div class="col">
+                            <div class="card h-100 card-post">
+                                <div class="card-post-body">
+                                    <p class="card-post-title">${u.getTitle()}</p>
+                                    <a href="details.jsp?id=${u.getId()}" class="nav-link card-post-link">Read More <i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </c:forEach>
                     <%} else {%>
-                    <<p class="section-text">No Post</p>
+                    <p class="section-text text-center">No Post</p>
                     <%}%>
                 </div>
             </div>
         </section>
 
-            <footer>
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
-                        <p class="footer-heading text-center">Reach Us Out</p>
-                        <div class="col-sm-1 col">
-                            <a href="/" class="nav-link footer-link">
-                                <i class="bi bi-instagram"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-1 col">
-                            <a href="/" class="nav-link footer-link">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-1 col">
-                            <a href="/" class="nav-link footer-link">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-1 col">
-                            <a href="/" class="nav-link footer-link">
-                                <i class="bi bi-twitter"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-1 col">
-                            <a href="/" class="nav-link footer-link">
-                                <i class="bi bi-envelope"></i>
-                            </a>
-                        </div>
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <p class="footer-heading text-center">Reach Us Out</p>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
                     </div>
-
-                    <p class="text-center footer-cop">© BLog 2022</p>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
                 </div>
-            </footer>
-            <script src="./js/bootstrap.bundle.js" defer></script>
+
+                <p class="text-center footer-cop">© BLog 2022</p>
+            </div>
+        </footer>
+        <script src="./js/bootstrap.bundle.js" defer></script>
     </body>
 
 </html>

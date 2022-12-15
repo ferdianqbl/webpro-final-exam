@@ -16,15 +16,53 @@
         <title>Blog List</title>
 
         <link rel="stylesheet" href="./../css/bootstrap.css">
-        <!--<link rel="stylesheet" href="./../css/dataTables.css">-->
+        <link rel="stylesheet" href="./../css/frontend.css">
         <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-
+        <style>
+            .blog-list {
+                padding-top: 5rem;
+            }
+        </style>
     </head>  
     <body>  
 
         <%@page import="com.javatpoint.data.BlogData,com.javatpoint.bean.*,java.util.*"%>  
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 
+        <nav class="navbar navbar-expand-lg p-0 fixed-top" id="my-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="./../index.jsp">
+                    Blog
+                </a>
+
+                <%if (session.getAttribute("user") != null) { %>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                       Hello, <%out.println(session.getAttribute("user"));%>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="viewblogs.jsp"><i class="bi bi-journals"></i> Dashboard</a></li>
+                        <li><a class="dropdown-item" href="./../index.jsp"><i class="bi bi-book"></i> Home</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form action="logout.jsp" method="POST">
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <%} else {%>
+                <a class="btn-custom-primary" href="./login.jsp">
+                    Login
+                </a>
+                <%}%>
+            </div>
+        </nav>
+        
         <div class="blog-list container my-5"> 
             <h1 class="text-center mb-5">Blog List</h1>  
 
@@ -40,7 +78,6 @@
                     session.removeAttribute("status");
                     session.removeAttribute("messageStatus");
                 %>
-                <c:remove var="status" scope="session" />
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <%}%>
