@@ -1,6 +1,6 @@
-<%--
+<%-- 
     Document   : index
-    Created on : Dec 15, 2022, 9:52:50 AM
+    Created on : Dec 15, 2022, 4:52:48 PM
     Author     : Ferdian Iqbal
 --%>
 
@@ -12,55 +12,97 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login</title>
-
+        <link rel="icon" href="/images/logo.svg">
+        <title>Blog</title>
         <link rel="stylesheet" href="./css/bootstrap.css">
-        <link rel="stylesheet" href="./css/login-register.css">
+        <link rel="stylesheet" href="./css/frontend.css">
     </head>
 
-    <body class="bg-primary">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-10 col-sm-8 col-lg-5 form-box">
+    <body>
 
-                    <%if (session.getAttribute("status") != null) {%>
-                    <div class="alert alert-dismissible fade show <%
-                        if (session.getAttribute("status") == "1") {
-                            out.println("alert-success");
-                        } else
-                            out.println("alert-danger");
-                         %>" role="alert">
-                        <%
-                            out.println(session.getAttribute("messageStatus"));
-                            session.removeAttribute("status");
-                            session.removeAttribute("messageStatus");
-                        %>
-                        <c:remove var="status" scope="session" />
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <%}%>
+        <nav class="navbar navbar-expand-lg p-0 fixed-top" id="my-navbar">
+            <div class="container">
+                <a class="navbar-brand">
+                    Blog
+                </a>
 
+                <!--                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Welcome, {{ auth()->user()->username }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/editor"><i class="bi bi-journals"></i> Dashboard</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <form action="/logout" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>
+                                                    Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>-->
 
-                    <h2 class="text-center mb-5">Login</h2>
-                    <form method="POST" action="./userValidation.jsp" autocomplete="off">
+                <a class="btn-custom-primary" href="./login.jsp">
+                    Login
+                </a>
 
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" autofocus required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="w-100 btn btn-lg btn-success mt-4">Login</button>
-                    </form>
-
-                    <p class="login-text text-center mt-3 text-secondary">Not registered? <a href="./adduserform.jsp">Register
-                            Now!</a>
-                    </p>
-                </div>
             </div>
-            <script src="./js/bootstrap.bundle.js"></script>
+        </nav>
+
+        <div class="home" id="home">
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <p class="text-quote text-center">
+                            ”Education is the most powerful weapon which you can use to change the world.”
+                            <br> <span> -Nelson Mandela</span>
+                        </p>
+                        <div class="hero-img">                        
+                            <img src="./images/hero.jpg" alt="" class="img-fluid img-hero">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <p class="footer-heading text-center">Reach Us Out</p>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 col">
+                        <a href="/" class="nav-link footer-link">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="text-center footer-cop">© BLog 2022</p>
+            </div>
+        </footer>
+        <script src="./js/bootstrap.bundle.js" defer></script>
     </body>
 
 </html>
