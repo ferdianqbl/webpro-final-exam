@@ -43,7 +43,7 @@
                         <button type="submit" class="w-100 btn btn-lg btn-success mt-4">Register</button>
                     </form>
 
-                    <p class="login-text text-center mt-3 text-secondary">Already registered? <a href="./index.jsp">Login
+                    <p class="login-text text-center mt-3 text-secondary">Already registered? <a href="./login.jsp">Login
                             Now!</a>
                     </p>
                 </div>

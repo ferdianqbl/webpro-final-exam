@@ -42,6 +42,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./Blog/viewblogs.jsp"><i class="bi bi-journals"></i> Dashboard</a></li>
+                        <li><a class="dropdown-item" href="./index.jsp"><i class="bi bi-book"></i> Home</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

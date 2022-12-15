@@ -9,5 +9,9 @@
 <jsp:setProperty property="*" name="u"/>  
 <%
     BlogData.delete(u);
+    session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+        session.setAttribute("status", "1");
+        session.setAttribute("blogStatus", "Delete Success!");
     response.sendRedirect("viewblogs.jsp");
 %>

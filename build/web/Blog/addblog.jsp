@@ -16,13 +16,13 @@
     session.removeAttribute("status");
     session.removeAttribute("messageStatus");
         session.setAttribute("status", "1");
-        session.setAttribute("messageStatus", "You're blog have successfully added!");
+        session.setAttribute("blogStatus", "You're blog have successfully added!");
         response.sendRedirect("viewblogs.jsp");
     } else {
         session.removeAttribute("status");
             session.removeAttribute("messageStatus");
             session.setAttribute("status", "0");
-            session.setAttribute("messageStatus", "Add Blog Failed!");
+            session.setAttribute("blogStatus", "Add Blog Failed!");
             response.sendRedirect("viewblogs.jsp");
     }
 %>

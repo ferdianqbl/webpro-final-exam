@@ -3,6 +3,11 @@
     Created on : Dec 15, 2022, 4:52:48 PM
     Author     : Ferdian Iqbal
 --%>
+<%
+session.removeAttribute("status");
+    session.removeAttribute("messageStatus");
+    session.removeAttribute("blogStatus");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

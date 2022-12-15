@@ -78,9 +78,9 @@
                     out.println("alert-danger");
                  %>" role="alert">
                 <%
-                    out.println(session.getAttribute("messageStatus"));
+                    out.println(session.getAttribute("blogStatus"));
                     session.removeAttribute("status");
-                    session.removeAttribute("messageStatus");
+                    session.removeAttribute("blogStatus");
                 %>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

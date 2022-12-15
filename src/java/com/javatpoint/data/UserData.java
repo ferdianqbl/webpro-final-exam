@@ -29,6 +29,9 @@ public class UserData {
     public static int save(User u) {
         int status = 0;
         try {
+            User res = findUser(u);            
+            
+            if(res == null){
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
                     "insert into user(name,username,password) values(?,?,?)");
@@ -36,6 +39,7 @@ public class UserData {
             ps.setString(2, u.getUsername());
             ps.setString(3, u.getPassword());
             status = ps.executeUpdate();
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -137,5 +141,27 @@ public class UserData {
             System.out.println(e);
         }
         return status;
+    }
+    
+    public static User findUser(User u){
+        User user = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "select * from user where username=?");
+            ps.setString(1, u.getUsername());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setName(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return user;
     }
 }

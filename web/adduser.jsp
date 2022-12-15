@@ -15,12 +15,12 @@
     session.removeAttribute("messageStatus");
         session.setAttribute("status", "1");
         session.setAttribute("messageStatus", "You have successfully registered!");
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("login.jsp");
     } else {
         session.removeAttribute("status");
             session.removeAttribute("messageStatus");
             session.setAttribute("status", "0");
             session.setAttribute("messageStatus", "Register Failed!");
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
     }
 %>
