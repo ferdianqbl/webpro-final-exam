@@ -19,6 +19,12 @@
     </head>
 
     <body>
+        <%@page import="com.javatpoint.data.BlogData,com.javatpoint.bean.*,java.util.*"%>  
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+        <%
+            List<Blog> list = BlogData.getAllRecords();
+            request.setAttribute("list", list);
+        %>  
 
         <nav class="navbar navbar-expand-lg p-0 fixed-top" id="my-navbar">
             <div class="container">
@@ -68,41 +74,68 @@
             </section>
         </div>
 
-        <footer>
+        <section class="author-choice" id="author-choice">
             <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <p class="footer-heading text-center">Reach Us Out</p>
-                    <div class="col-sm-1 col">
-                        <a href="/" class="nav-link footer-link">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                    <div class="col-sm-1 col">
-                        <a href="/" class="nav-link footer-link">
-                            <i class="bi bi-github"></i>
-                        </a>
-                    </div>
-                    <div class="col-sm-1 col">
-                        <a href="/" class="nav-link footer-link">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </div>
-                    <div class="col-sm-1 col">
-                        <a href="/" class="nav-link footer-link">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                    </div>
-                    <div class="col-sm-1 col">
-                        <a href="/" class="nav-link footer-link">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-                    </div>
+                <div class="home-header-section-group d-flex justify-content-between align-items-center">
+                    <h2 class="home-section-title mb-5 text-center d-block mx-auto">All Posts</h2>
                 </div>
+                <div class="row justify-content-center align-items-center row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
-                <p class="text-center footer-cop">© BLog 2022</p>
+                    <% if (list != null) { %>
+                    
+                    <c:forEach items="${list}" var="u">
+                    <div class="col">
+                        <div class="card h-100 card-post">
+                            <div class="card-post-body">
+                                <p class="card-post-title">${u.getTitle()}</p>
+                                <a href="details.jsp?id=${u.getId()}" class="nav-link card-post-link">Read More <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    <%} else {%>
+                    <<p class="section-text">No Post</p>
+                    <%}%>
+                </div>
             </div>
-        </footer>
-        <script src="./js/bootstrap.bundle.js" defer></script>
+        </section>
+
+            <footer>
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <p class="footer-heading text-center">Reach Us Out</p>
+                        <div class="col-sm-1 col">
+                            <a href="/" class="nav-link footer-link">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-1 col">
+                            <a href="/" class="nav-link footer-link">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-1 col">
+                            <a href="/" class="nav-link footer-link">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-1 col">
+                            <a href="/" class="nav-link footer-link">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-1 col">
+                            <a href="/" class="nav-link footer-link">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="text-center footer-cop">© BLog 2022</p>
+                </div>
+            </footer>
+            <script src="./js/bootstrap.bundle.js" defer></script>
     </body>
 
 </html>
