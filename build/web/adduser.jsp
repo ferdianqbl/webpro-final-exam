@@ -18,9 +18,9 @@
         response.sendRedirect("index.jsp");
     } else {
         session.removeAttribute("status");
-    session.removeAttribute("messageStatus");
-        session.setAttribute("status", "0");
-        session.setAttribute("messageStatus", "Register Failed!");
-        response.sendRedirect("index.jsp");
+            session.removeAttribute("messageStatus");
+            session.setAttribute("status", "0");
+            session.setAttribute("messageStatus", "Register Failed!");
+            response.sendRedirect("index.jsp");
     }
 %>
