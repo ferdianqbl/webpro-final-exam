@@ -21,7 +21,7 @@
         session.removeAttribute("status");
             session.removeAttribute("messageStatus");
             session.setAttribute("status", "0");
-            session.setAttribute("messageStatus", "Username already used!");
+            session.setAttribute("messageStatus", "Login Failed!");
             response.sendRedirect("login.jsp");
     }
 %>

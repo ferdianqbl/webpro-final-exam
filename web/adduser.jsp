@@ -20,7 +20,7 @@
         session.removeAttribute("status");
             session.removeAttribute("messageStatus");
             session.setAttribute("status", "0");
-            session.setAttribute("messageStatus", "Register Failed!");
+            session.setAttribute("messageStatus", "Username already used!");
             response.sendRedirect("login.jsp");
     }
 %>
